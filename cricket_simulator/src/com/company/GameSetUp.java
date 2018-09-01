@@ -9,6 +9,11 @@ public class GameSetUp {
 
     private int gameScore =0;
 
+    private static int totalWickets =10;
+
+    private  int Wickets =0;
+    private static String[] battingOutcomes = {"wicket","runs"};
+
     public int getGameScore() {
         return gameScore;
     }
@@ -19,5 +24,20 @@ public class GameSetUp {
 
     public String getBowlOutcome(){
          return bowlOutcomes[(int)(Math.random() * 3)];
+    }
+    public String getBattingOutcome(){
+        return battingOutcomes[(int)(Math.random() * 2)];
+    }
+
+    public int getWickets() {
+        return Wickets;
+    }
+
+    public void setWickets(int wickets) {
+        Wickets = wickets;
+    }
+
+    public void DisplayScore(){
+        System.out.println(this.gameScore+"/"+this.Wickets);
     }
 }
