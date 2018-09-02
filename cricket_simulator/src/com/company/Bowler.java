@@ -1,13 +1,14 @@
 package com.company;
 
-public class Bowler extends GameSetUp {
+public class Bowler {
     private String name;
-    private int overs=0;
-    private int balls=0;
-    private int wickets=0;
 
-    public Bowler(String name) {
+    private Match match;
+    private static String[] bowlOutcomes = {"wide", "noBall", "legal"};
+
+    public Bowler(String name,Match match) {
         this.name = name;
+        this.match = match;
     }
 
     public String getName() {
@@ -18,45 +19,24 @@ public class Bowler extends GameSetUp {
         this.name = name;
     }
 
-    public int getOvers() {
-        return overs;
-    }
 
-    public void setOvers(int overs) {
-        this.overs = overs;
-    }
 
-    public int getBalls() {
-        return balls;
-    }
-
-    public void setBalls(int balls) {
-        this.balls = balls;
-    }
-
-    public int getWickets() {
-        return wickets;
-    }
-
-    public void setWickets(int wickets) {
-        this.wickets = wickets;
-    }
     public void Bowl(){
-        String bowlOutcome= this.getBowlOutcome();
+        String bowlOutcome= bowlOutcomes[(int)(Math.random() * 3)];
         if(bowlOutcome.equals("wide")||bowlOutcome.equals("noball"))
         {
-            this.setGameScore(this.getGameScore()+1);
+            this.match.setGameScore(this.match.getGameScore()+1);
         }
         else {
 
-            if (this.balls>=5)
+            if (this.match.getBalls()>=5)
             {
-                this.overs++;
-                this.balls=0;
+                this.match.setOvers(this.match.getOvers()+1);
+                this.match.setBalls(0);
             }
             else
             {
-                this.balls++;
+                this.match.setBalls(this.match.getBalls()+1);
             }
 
 

@@ -1,6 +1,6 @@
 package com.company;
 
-public class Batsman extends GameSetUp{
+public class Batsman {
 
     private String Name;
 
@@ -8,8 +8,13 @@ public class Batsman extends GameSetUp{
 
     private int ballsFaced;
 
-    public Batsman(String name) {
-        Name = name;
+    private Match match;
+
+    private static String[] battingOutcomes = {"wicket","0","1","2","3","4","5","6"};
+
+    public Batsman(String name,Match match) {
+        this.Name = name;
+        this.match = match;
     }
 
     public int getRunsScored() {
@@ -28,22 +33,24 @@ public class Batsman extends GameSetUp{
         this.ballsFaced = ballsFaced;
     }
 
+
     private double strikeRate(){
        return runsScored/ballsFaced;
     }
+
     public void Bat()
     {
-        String battingOutcome = this.getBattingOutcome();
-        System.out.println(battingOutcome);
+        String battingOutcome = battingOutcomes[(int)(Math.random() *7 )];
+
 
         if (battingOutcome.equals("wicket")) {
-            this.setWickets(this.getWickets()+1);
+            this.match.setWickets(this.match.getWickets()+1);
         }
         else
         {
-            int runs= (int)(Math.random() * 7);
+            int runs= Integer.parseInt(battingOutcome);
             this.runsScored+=runs;
-            this.setGameScore(this.getGameScore()+runs);
+            this.match.setGameScore(this.match.getGameScore()+runs);
         }
 
     }
