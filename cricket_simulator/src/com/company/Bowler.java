@@ -4,7 +4,8 @@ public class Bowler {
     private String name;
 
     private Match match;
-    private static String[] bowlOutcomes = {"wide", "noBall", "legal"};
+    private static String[] bowlOutcomes = {"wide", "noBall", "goodLength",
+                                                 "yorker","short","fullToss"};
 
     public Bowler(String name,Match match) {
         this.name = name;
@@ -22,7 +23,7 @@ public class Bowler {
 
 
     public void Bowl(){
-        String bowlOutcome= bowlOutcomes[(int)(Math.random() * 3)];
+        String bowlOutcome= bowlOutcomes[(int)(Math.random() * 7)];
         if(bowlOutcome.equals("wide")||bowlOutcome.equals("noball"))
         {
             this.match.setGameScore(this.match.getGameScore()+1);
